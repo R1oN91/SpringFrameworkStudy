@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+		<!-- MyList myListBean = new MyList(list);  
+		Constructor Injection-->
+		<bean id="myListBean" class ="myutil.MyList">
+			<constructor-arg>
+				<!-- List list= new ArrayLiST() -->
+				<list>
+					<!-- list.add("사과") -->
+					<value>참외</value>
+					<value>수박</value>
+					<value>딸기</value>
+				</list>		
+			</constructor-arg>
+		</bean>
+		
+		<!-- MySet mySetBean = new MySet();
+			 mySetBean.setSet(set);
+			 
+			 Setter Injection
+		  -->
+		
+		<bean id="mySetBean" class ="myutil.MySet">
+			<property name="set">
+				<!-- Set set = new HashSet(); -->
+				<set>
+					<!-- set.add("서울")  -->
+					<value>서울</value>
+					<value>경기</value>
+					<value>인천</value>
+				</set>
+			</property>
+		</bean>
+		
+		<!-- MyMap myMapBean = new HashMap();  
+				   myMapBean.setMap(map);-->
+		<bean id="myMapBean" class="myutil.MyMap">
+			<property name="map" >
+				<!-- Map map = new HashMap() -->
+				<map>
+					<!--ㅡmap.put("대한민국","서울")  -->
+					<entry key="대한민국" value="서울"/>
+					<entry key="일본" value="도쿄"/>
+					<entry key="미국" value="워싱턴"/>
+				</map>
+			</property>
+		</bean>
+		<!-- MyProp myPropBean = new MyPROP();  
+			 		myPropBean.setProp(prop);
+		-->
+		<bean id= "myPropBean" class="myutil.MyProp">
+			<property name="prop">
+			  <props>
+			  	<prop key="one">하나</prop>
+			  	<prop key="two">둘</prop>
+			  	<prop key="three">셋</prop>
+			  </props>
+			</property>
+		</bean>
+			 		
+		
+		
+		
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+

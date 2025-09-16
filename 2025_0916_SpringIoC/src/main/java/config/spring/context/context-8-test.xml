@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<!-- bean : 콩 => 객체를 상징적으로 표현
+	PersonVo p1 =  new PersonVo("일길동",20,"010-111-1234");
+	
+		Constructor Injection(생성자 주입)
+					prototype :요청할때만 생성함. 
+	 
+	 -->
+	<bean id="p1" class="vo.PersonVo">
+		<constructor-arg value="일길동"/>
+		<constructor-arg value="20"/>
+		<constructor-arg value="010-111-1234"/>
+	</bean>
+	
+	<!-- 
+		PersonVo p2= new PersonVo();
+		p2.setName("이길동");
+		p2.setAge(30);
+		p2.setTel("010-222-1234");
+	
+		Setter Injection(Setter이용한 주입)
+		
+		scope : singleton
+		
+	 -->
+	
+	<bean id="p2" class="vo.PersonVo" scope="singleton">
+		<property name="name" value="이길동"/>
+		<property name="age" value="30"/>
+		<property name="tel" value="010-222-1234"/>
+	</bean>
+	
+	<!-- String nameBean =new String("삼길동") -->
+	<bean id="nameBean" class="java.lang.String">
+		<constructor-arg value="삼길동"/>
+	</bean>
+	
+	<!-- Integer ageBean = new Integer(30); -->
+	<bean id="ageBean" class="java.lang.Integer">
+		<constructor-arg value="30"/>
+	</bean>
+	
+	<!-- String telBean = new String("010-333-1234"); -->
+	<bean id="telBean" class="java.lang.String">
+		<constructor-arg value="010-333-1234"/>
+	</bean>
+	
+	<!-- Constructor Injection -->
+	<bean id = "p3" class="vo.PersonVo" scope="prototype">
+		<constructor-arg ref="nameBean"/>
+		<constructor-arg ref="ageBean"/>
+		<constructor-arg ref="telBean"/>
+	</bean>
+	
+	<!--Setter Injection  -->
+	<bean id = "p4" class="vo.PersonVo">
+		<property name="name" ref="nameBean"/>
+		<property name="age"  ref="ageBean"/>
+		<property name="tel"  ref="telBean"/>
+	</bean>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
+</beans>
