@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+	function send(f) {
+		let title = f.title.value.trim();
+		let photo1 = f.photo[0].value;
+		let photo2 = f.photo[1].value;
+		
+		/* 이름이 같은거면 배열로 관리 한다.  */
+		
+		if(title==""){
+			alert("제목을 입력하세요!!");
+			f.title.value="";
+			f.title.focus();
+			return;
+		}
+		
+		if(photo1==""){
+			alert("사진1을 선택하세요!!");
+			return;
+		}
+		
+		if(photo2==""){
+			alert("사진2을 선택하세요!!");
+			return;
+		}
+		
+		f.action="upload2.do"
+		f.submit();//전송(제출)
+	}
+</script>
+</head>
+<body>
+
+<form method="POST" enctype="multipart/form-data">
+	제목:<input name="title"><br>
+	<!-- 스프링에서는 여러개의 파일 업로드 시 반드시 동일파라메터 (name)명을 사용 해야한다 -->
+	사진1:<input type="file" name="photo"><br>  
+	사진2:<input type="file" name="photo"><br>
+		<input type="button" value="사진올리기" onclick="send(this.form);">
+	 
+
+</form>
+</body>
+</html>
